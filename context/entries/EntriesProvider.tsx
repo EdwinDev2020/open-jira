@@ -12,26 +12,7 @@ interface Props {
 }
 
 const Entries_INITIAL_STATE: EntriesState = {
-    entries: [
-        {
-            _id: uuidv4(),
-            description: 'pending: Aute quis laboris ad minim minim consequat veniam aliquip do ex in laborum.',
-            status: 'pending',
-            createAt: Date.now(),
-        },
-        {
-            _id: uuidv4(),
-            description: 'in-progress: Mollit aliqua velit aliqua incididunt.',
-            status: 'in-progress',
-            createAt: Date.now() - 1000000,
-        },
-        {
-            _id: uuidv4(),
-            description: 'finished: Consequat eu incididunt occaecat do incididunt ipsum id anim labore quis.',
-            status: 'finished',
-            createAt: Date.now() - 100000,
-        },
-    ],
+    entries: [],
 }
 
 export const EntriesProvider:FC<Props> = ({ children }) => {
@@ -42,7 +23,7 @@ export const EntriesProvider:FC<Props> = ({ children }) => {
         const newEntry: Entry = {
             _id: uuidv4(),
             description,
-            createAt: Date.now(),
+            createdAt: Date.now(),
             status: 'pending'
         }
 
