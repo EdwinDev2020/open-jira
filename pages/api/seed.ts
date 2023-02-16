@@ -1,4 +1,5 @@
-import { db } from '@/database';
+import { db, seedData } from '@/database';
+import { Entry } from '@/models';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
@@ -14,9 +15,11 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
     }
 
     await db.connect();
-
-
+    // Escribiendo en la base de datos
+    await Entry.deleteMany();
+    await Entry.insertMany( seedData.entries );
     
+    // Desconectando de la base de datos
     await db.disconnect();
 
     res.status(200).json({ message: 'Proceso realizado correctamente' })

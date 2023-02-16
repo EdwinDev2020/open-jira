@@ -1,5 +1,5 @@
 interface SeedData {
-    entries: SeedEntry[]
+    entries: SeedEntry[];
 }
 
 interface SeedEntry {
